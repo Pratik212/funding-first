@@ -15,7 +15,6 @@ const EmailSection = () => {
                         Let`&apos;s Connect
                     </h5>
                     <p className="text-[#ADB7BE] mb-4 max-w-md">
-                        {" "}
                         Embark on a journey to financial empowerment with personalized Loan Advisory Expertise. We
                         specialize in crafting strategic solutions that align with your goals, providing precise Capital
                         Guidance to shape a secure and prosperous future. Let's navigate the world of finance together –
