@@ -57,10 +57,13 @@ const AboutSection = () => {
                 <div className="mt-4 md:mt-0 text-left flex flex-col h-full">
                     <h2 className="text-4xl font-bold text-white mb-4">About Me</h2>
                     <p className="text-base lg:text-lg">
-                        Welcome to our innovative    funding fund website, where financial empowerment meets strategic loan
-                        management. Discover a world of opportunities as we navigate the intricate landscape of fund
-                        allocation, ensuring optimal returns with minimal risk. Our seasoned team combines expertise
-                        with a forward-thinking approach, delivering unparalleled results.
+                        Getting funds for personal or business purposes can be difficult.We Funding First, Situated at Surat, Gujarat,
+                        offer a wide range of loan schemes with low-interest rates.Choose from out range of loans as per your requirements with
+                        no hidden charges.
+                        <br/><br/>Out approach towards credit solutions is to make valuable credit accessible for everyone through our offerings of lower interest rates,
+                        maximum loan to value, and no hidden charges.
+                        <br/><br/>
+                        Our bank partnerships & customer-focused approach makes taking a loan fast, simple & safe.
                     </p>
                     {/*<div className="flex flex-row justify-start mt-8">*/}
                     {/*    <TabButton*/}
