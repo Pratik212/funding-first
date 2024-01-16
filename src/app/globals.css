@@ -27,8 +27,8 @@ body {
 }
 
 .text-gradient {
-  color: #f35626;
-  background-image: -webkit-linear-gradient(92deg, #f35626, #feab3a);
+  color: #D4B100;
+  background-image: -webkit-linear-gradient(92deg, #DAB600, #D4B100);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   -webkit-animation: 10s infinite linear;

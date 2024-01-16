@@ -1,6 +1,8 @@
 import React from "react";
-import GithubIcon from "../../../public/github-icon.svg";
 import LinkedinIcon from "../../../public/linkedin-icon.svg";
+import Instagram from "../../../public/instagram.svg";
+import Twitter from "../../../public/twitter.svg";
+import Facebook from "../../../public/facebook.svg";
 import Image from "next/image";
 
 const EmailSection = () => {
@@ -11,13 +13,15 @@ const EmailSection = () => {
                     className="bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary-900 to-transparent rounded-full h-80 w-80 z-0 blur-lg absolute top-3/4 -left-4 transform -translate-x-1/2 -translate-1/2"/>
                 <div className="z-10">
                     <h5 className="text-xl font-bold text-white my-2">
-                        Let`&apos;s Connect
+                        Let&apos;s Connect
                     </h5>
                     <p className="text-[#ADB7BE] mb-4 max-w-md">
                         Embark on a journey to financial empowerment with personalized Loan Advisory Expertise. We specialize in crafting strategic solutions that align with your goals, providing precise Capital Guidance to shape a secure and prosperous future. Let`&apos;s navigate the world of finance together – your dreams, our commitment. Ready to elevate your financial strategy?
                     </p>
                     <div className="socials flex flex-row gap-2">
-                        <Image src={GithubIcon} alt="Github Icon"/>
+                        <Image src={Facebook} alt="Facebook Icon"/>
+                        <Image src={Instagram} alt="Instagram Icon"/>
+                        <Image src={Twitter} alt="Twitter Icon"/>
                         <Image src={LinkedinIcon} alt="Linkedin Icon"/>
                     </div>
                 </div>
