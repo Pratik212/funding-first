@@ -20,7 +20,7 @@ const Footer = () => {
                 </div>
                 <div className="flex-col">
                     <p className="text-slate-600 italic" style={{fontSize: '15px', color: '#fff', fontWeight: 'bold'}}>All rights reserved.</p>
-                    <p className="text-slate-600 italic" style={{fontSize: '15px', color: '#fff', fontWeight: 'bold'}}>3rd floor, T-17 silicon shopppers opp. Satya nagar, udhana, surat
+                    <p className="text-slate-600 italic" style={{fontSize: '15px', color: '#fff', fontWeight: 'bold'}}>3rd floor, T-17 silicon shopppers opp. satya nagar, udhana, surat
                         -394210</p>
                 </div>
 
