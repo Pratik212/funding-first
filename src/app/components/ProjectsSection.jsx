@@ -1,120 +1,92 @@
 "use client";
-import React, { useState, useRef } from "react";
-import ProjectCard from "./ProjectCard";
-import ProjectTag from "./ProjectTag";
-import { motion, useInView } from "framer-motion";
+import React from "react";
+import { motion } from "framer-motion";
+import Link from "next/link";
 
-const projectsData = [
+const services = [
   {
-    id: 1,
-    title: "Mortgage Loan",
-    description: "Secure your dream property with our flexible mortgage solutions featuring competitive interest rates and long-term repayment options.",
-    image: "/images/mogatgeLoan.jpg",
-    tag: ["All", "Web"],
-    gitUrl: "/",
-    previewUrl: "/",
-  },
-  {
-    id: 2,
-    title: "Personal Loan",
-    description: "Get immediate funds for your personal needs—debt consolidation, medical expenses, or travel—with minimal documentation.",
-    image: "/images/prLoan.png",
-    tag: ["All", "Web"],
-    gitUrl: "/",
-    previewUrl: "/",
-  },
-  {
-    id: 3,
-    title: "Home Loan",
-    description: "Turn your house into a home with our customized home financing plans designed to fit your budget and requirements.",
-    image: "/images/homeLoan.jpg",
-    tag: ["All", "Web"],
-    gitUrl: "/",
-    previewUrl: "/",
-  },
-  {
-    id: 4,
     title: "Business Loan",
-    description: "Fuel your business growth with strategic capital. We offer tailored loans for startups and established enterprises alike.",
-    image: "/images/businessLoan.jpg",
-    tag: ["All", "Mobile"],
-    gitUrl: "/",
-    previewUrl: "/",
+    description: "Get quick funding for your business needs with minimal documentation and fast approval.",
+    icon: "💼",
+    link: "#"
   },
   {
-    id: 5,
-    title: "Used Car Loan",
-    description: "Drive home your preferred pre-owned vehicle with our easy financing options and quick approval process.",
-    image: "/images/usedCar.jpg",
-    tag: ["All", "Web"],
-    gitUrl: "/",
-    previewUrl: "/",
+    title: "Professional Loan",
+    description: "Specialized loans for doctors, CAs, and other professionals with flexible repayment options.",
+    icon: "👨‍⚕️",
+    link: "#"
   },
   {
-    id: 6,
-    title: "Self Employed Individual Loan",
-    description: "Specialized credit solutions for entrepreneurs and self-employed professionals to manage cash flow and expansion.",
-    image: "/images/selfEmployeed.png",
-    tag: ["All", "Web"],
-    gitUrl: "/",
-    previewUrl: "/",
+    title: "Home Loan",
+    description: "Turn your dream home into reality with our competitive home loan interest rates.",
+    icon: "🏠",
+    link: "#"
   },
+  {
+    title: "Loan Against Property",
+    description: "Unlock the value of your property with our loan against property solutions.",
+    icon: "🏢",
+    link: "#"
+  },
+  {
+    title: "Debt Consolidation Syndication",
+    description: "Consolidate multiple debts into one easy payment with better terms.",
+    icon: "📊",
+    link: "#"
+  }
 ];
 
 const ProjectsSection = () => {
-  const [tag, setTag] = useState("All");
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
-
-  const handleTagChange = (newTag) => {
-    setTag(newTag);
-  };
-
-  const filteredProjects = projectsData.filter((project) =>
-    project.tag.includes(tag)
-  );
-
-  const cardVariants = {
-    initial: { y: 50, opacity: 0 },
-    animate: { y: 0, opacity: 1 },
-  };
-
   return (
-    <section id="services" className="py-10 md:py-20">
-      <motion.div
-        initial={{ opacity: 0, y: -20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        viewport={{ once: true }}
-        className="text-center mb-16"
-      >
-        <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-4">
-          Our <span className="text-gradient">Services</span>
-        </h2>
-        <p className="text-slate-400 max-w-2xl mx-auto text-lg px-4">
-          Comprehensive financial solutions tailored to your unique needs. We simplify the lending process so you can focus on what matters.
-        </p>
-      </motion.div>
-      <ul ref={ref} className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
-        {filteredProjects.map((project, index) => (
-          <motion.li
-            key={index}
-            variants={cardVariants}
-            initial="initial"
-            animate={isInView ? "animate" : "initial"}
-            transition={{ duration: 0.3, delay: index * 0.1 }}
-          >
-            <ProjectCard
-              key={project.id}
-              title={project.title}
-              description={project.description}
-              imgUrl={project.image}
-              gitUrl={project.gitUrl}
-              previewUrl={project.previewUrl}
-            />
-          </motion.li>
-        ))}
-      </ul>
+    <section id="services" className="py-20 bg-gray-50">
+      <div className="container mx-auto px-4">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <h2 className="section-title">Providing all the loan services for you</h2>
+          <p className="section-subtitle">
+            Comprehensive financial solutions tailored to your needs
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {services.map((service, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              viewport={{ once: true }}
+              className="service-card group"
+            >
+              <div className="feature-icon mx-auto">
+                <span className="text-4xl">{service.icon}</span>
+              </div>
+              <h3 className="text-2xl font-bold text-gray-800 mb-3 text-center">
+                {service.title}
+              </h3>
+              <p className="text-gray-600 mb-6 text-center leading-relaxed">
+                {service.description}
+              </p>
+              <div className="text-center">
+                <Link
+                  href={service.link}
+                  className="text-orange-500 font-semibold hover:text-orange-600 transition-colors inline-flex items-center gap-2"
+                >
+                  Read More
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                </Link>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
     </section>
   );
 };

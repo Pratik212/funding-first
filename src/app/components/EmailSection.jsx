@@ -1,9 +1,5 @@
 "use client";
 import React, { useState } from "react";
-import GithubIcon from "../../../public/github-icon.svg";
-import LinkedinIcon from "../../../public/linkedin-icon.svg";
-import Link from "next/link";
-import Image from "next/image";
 import { motion } from "framer-motion";
 
 const EmailSection = () => {
@@ -11,120 +7,115 @@ const EmailSection = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const data = {
-            email: e.target.email.value,
-            subject: e.target.subject.value,
-            message: e.target.message.value,
-        };
         setEmailSubmitted(true);
     };
 
     return (
-        <section
-            id="contact"
-            className="grid grid-cols-1 md:grid-cols-2 py-12 md:py-24 gap-12 relative"
-        >
-            {/* Background Decor */}
-            <div className="absolute top-1/4 -left-10 w-80 h-80 bg-orange-500/10 rounded-full blur-[100px] pointer-events-none -z-10" />
+        <section id="contact" className="py-20 bg-gradient-to-br from-orange-50 to-white">
+            <div className="container mx-auto px-4">
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
+                    viewport={{ once: true }}
+                    className="text-center mb-16"
+                >
+                    <h2 className="section-title">Compare & get your loan in right way</h2>
+                    <p className="section-subtitle">
+                        Fill out the form below and our experts will get back to you within 24 hours
+                    </p>
+                </motion.div>
 
-            <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8 }}
-                viewport={{ once: true }}
-                className="z-10 px-4 md:px-0"
-            >
-                <h5 className="text-4xl md:text-5xl font-extrabold text-white my-4">
-                    Let’s <span className="text-gradient">Connect</span>
-                </h5>
-                <p className="text-slate-400 mb-8 max-w-md text-lg leading-relaxed">
-                    Ready to take the first step towards your financial goals? Our experts are here to help you find the perfect loan solution.
-                </p>
-                <div className="socials flex flex-row gap-6 mb-12 md:mb-0">
-                    {[
-                        { icon: "/github-icon.svg", url: "#" },
-                        { icon: "/linkedin-icon.svg", url: "#" }
-                    ].map((social, index) => (
-                        <motion.div
-                            key={index}
-                            whileHover={{ scale: 1.2, rotate: 5 }}
-                            whileTap={{ scale: 0.9 }}
-                            className="glass-card p-3 rounded-xl border border-white/10"
-                        >
-                            <Link href={social.url}>
-                                <Image src={social.icon} alt="SocialIcon" width={30} height={30} className="invert" />
-                            </Link>
-                        </motion.div>
-                    ))}
-                </div>
-            </motion.div>
-
-            <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8 }}
-                viewport={{ once: true }}
-                className="px-4 md:px-0"
-            >
-                <div className="glass-card p-8 md:p-10 rounded-[2.5rem] border border-white/10 shadow-2xl relative">
+                <div className="max-w-2xl mx-auto">
                     {emailSubmitted ? (
                         <motion.div
                             initial={{ opacity: 0, scale: 0.8 }}
                             animate={{ opacity: 1, scale: 1 }}
-                            className="text-white text-center py-10"
+                            className="bg-white p-12 rounded-2xl shadow-lg text-center"
                         >
-                            <div className="w-20 h-20 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
-                                <svg className="w-10 h-10 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                                <svg className="w-10 h-10 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
                                 </svg>
                             </div>
-                            <h3 className="text-2xl font-bold mb-2">Message Sent!</h3>
-                            <p className="text-slate-400 text-lg">We&apos;ll get back to you within 24 hours.</p>
+                            <h3 className="text-3xl font-bold text-gray-800 mb-4">Thank You!</h3>
+                            <p className="text-gray-600 text-lg">
+                                We&apos;ve received your inquiry. Our team will contact you within 24 hours.
+                            </p>
                         </motion.div>
                     ) : (
-                        <form className="flex flex-col" onSubmit={handleSubmit}>
-                            <div className="mb-6">
-                                <label className="text-white block mb-2 text-sm font-bold uppercase tracking-wider">Email Address</label>
-                                <input
-                                    name="email"
-                                    type="email"
-                                    id="email"
-                                    required
-                                    className="bg-white/5 border border-white/10 placeholder-[#9CA2A9] text-gray-100 text-sm rounded-xl block w-full p-4 focus:ring-1 focus:ring-yellow-500 focus:border-yellow-500 transition-all outline-none"
-                                    placeholder="name@company.com"
-                                />
-                            </div>
-                            <div className="mb-6">
-                                <label className="text-white block mb-2 text-sm font-bold uppercase tracking-wider">Subject</label>
-                                <input
-                                    name="subject"
-                                    type="text"
-                                    id="subject"
-                                    required
-                                    className="bg-white/5 border border-white/10 placeholder-[#9CA2A9] text-gray-100 text-sm rounded-xl block w-full p-4 focus:ring-1 focus:ring-yellow-500 focus:border-yellow-500 transition-all outline-none"
-                                    placeholder="What's this about?"
-                                />
-                            </div>
-                            <div className="mb-8">
-                                <label className="text-white block mb-2 text-sm font-bold uppercase tracking-wider">Message</label>
-                                <textarea
-                                    name="message"
-                                    id="message"
-                                    rows="4"
-                                    className="bg-white/5 border border-white/10 placeholder-[#9CA2A9] text-gray-100 text-sm rounded-xl block w-full p-4 focus:ring-1 focus:ring-yellow-500 focus:border-yellow-500 transition-all outline-none resize-none"
-                                    placeholder="Tell us about your requirements..."
-                                />
-                            </div>
-                            <button
-                                type="submit"
-                                className="bg-gradient-to-r from-yellow-400 to-orange-500 text-black font-bold py-4 px-5 rounded-xl transition-all hover:shadow-[0_0_30px_rgba(255,165,0,0.4)] active:scale-95"
-                            >
-                                Send Message
-                            </button>
-                        </form>
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6 }}
+                            viewport={{ once: true }}
+                            className="bg-white p-8 md:p-12 rounded-2xl shadow-lg"
+                        >
+                            <form onSubmit={handleSubmit} className="space-y-6">
+                                <div>
+                                    <label className="block text-gray-700 font-semibold mb-2">Full Name</label>
+                                    <input
+                                        type="text"
+                                        required
+                                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all"
+                                        placeholder="Enter your name"
+                                    />
+                                </div>
+
+                                <div>
+                                    <label className="block text-gray-700 font-semibold mb-2">Email Address</label>
+                                    <input
+                                        type="email"
+                                        name="email"
+                                        required
+                                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all"
+                                        placeholder="your@email.com"
+                                    />
+                                </div>
+
+                                <div>
+                                    <label className="block text-gray-700 font-semibold mb-2">Phone Number</label>
+                                    <input
+                                        type="tel"
+                                        required
+                                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all"
+                                        placeholder="+91 XXXXX XXXXX"
+                                    />
+                                </div>
+
+                                <div>
+                                    <label className="block text-gray-700 font-semibold mb-2">Loan Type</label>
+                                    <select
+                                        required
+                                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all"
+                                    >
+                                        <option value="">Select loan type</option>
+                                        <option value="business">Business Loan</option>
+                                        <option value="professional">Professional Loan</option>
+                                        <option value="home">Home Loan</option>
+                                        <option value="lap">Loan Against Property</option>
+                                        <option value="debt">Debt Consolidation</option>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <label className="block text-gray-700 font-semibold mb-2">Message</label>
+                                    <textarea
+                                        name="message"
+                                        rows="4"
+                                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all resize-none"
+                                        placeholder="Tell us about your requirements..."
+                                    />
+                                </div>
+
+                                <button type="submit" className="btn-primary w-full text-center">
+                                    Get a Quote
+                                </button>
+                            </form>
+                        </motion.div>
                     )}
                 </div>
-            </motion.div>
+            </div>
         </section>
     );
 };
