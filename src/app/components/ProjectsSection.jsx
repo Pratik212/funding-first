@@ -8,7 +8,7 @@ const projectsData = [
   {
     id: 1,
     title: "Mortgage Loan",
-    description: "",
+    description: "Secure your dream property with our flexible mortgage solutions featuring competitive interest rates and long-term repayment options.",
     image: "/images/mogatgeLoan.jpg",
     tag: ["All", "Web"],
     gitUrl: "/",
@@ -17,7 +17,7 @@ const projectsData = [
   {
     id: 2,
     title: "Personal Loan",
-    description: "",
+    description: "Get immediate funds for your personal needs—debt consolidation, medical expenses, or travel—with minimal documentation.",
     image: "/images/prLoan.png",
     tag: ["All", "Web"],
     gitUrl: "/",
@@ -26,7 +26,7 @@ const projectsData = [
   {
     id: 3,
     title: "Home Loan",
-    description: "",
+    description: "Turn your house into a home with our customized home financing plans designed to fit your budget and requirements.",
     image: "/images/homeLoan.jpg",
     tag: ["All", "Web"],
     gitUrl: "/",
@@ -35,7 +35,7 @@ const projectsData = [
   {
     id: 4,
     title: "Business Loan",
-    description: "",
+    description: "Fuel your business growth with strategic capital. We offer tailored loans for startups and established enterprises alike.",
     image: "/images/businessLoan.jpg",
     tag: ["All", "Mobile"],
     gitUrl: "/",
@@ -44,7 +44,7 @@ const projectsData = [
   {
     id: 5,
     title: "Used Car Loan",
-    description: "",
+    description: "Drive home your preferred pre-owned vehicle with our easy financing options and quick approval process.",
     image: "/images/usedCar.jpg",
     tag: ["All", "Web"],
     gitUrl: "/",
@@ -52,8 +52,8 @@ const projectsData = [
   },
   {
     id: 6,
-    title: "Loan For Self Employed Individual\n",
-    description: "",
+    title: "Self Employed Individual Loan",
+    description: "Specialized credit solutions for entrepreneurs and self-employed professionals to manage cash flow and expansion.",
     image: "/images/selfEmployeed.png",
     tag: ["All", "Web"],
     gitUrl: "/",
@@ -80,18 +80,29 @@ const ProjectsSection = () => {
   };
 
   return (
-    <section id="services">
-      <h2 className="text-center text-4xl font-bold text-white mt-4 mb-8 md:mb-12">
-        Services
-      </h2>
-      <ul ref={ref} className="mt-16 grid md:grid-cols-3 gap-8 md:gap-12">
+    <section id="services" className="py-10 md:py-20">
+      <motion.div
+        initial={{ opacity: 0, y: -20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        viewport={{ once: true }}
+        className="text-center mb-16"
+      >
+        <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-4">
+          Our <span className="text-gradient">Services</span>
+        </h2>
+        <p className="text-slate-400 max-w-2xl mx-auto text-lg px-4">
+          Comprehensive financial solutions tailored to your unique needs. We simplify the lending process so you can focus on what matters.
+        </p>
+      </motion.div>
+      <ul ref={ref} className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
         {filteredProjects.map((project, index) => (
           <motion.li
             key={index}
             variants={cardVariants}
             initial="initial"
             animate={isInView ? "animate" : "initial"}
-            transition={{ duration: 0.3, delay: index * 0.4 }}
+            transition={{ duration: 0.3, delay: index * 0.1 }}
           >
             <ProjectCard
               key={project.id}

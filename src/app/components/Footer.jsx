@@ -4,26 +4,32 @@ import Image from "next/image";
 
 const Footer = () => {
     return (
-        <footer
-            className="b-0 footer border z-10 border-t-[#33353F] border-l-transparent border-r-transparent text-white">
-            <div className="container p-12 flex gap-5 justify-between items-center">
-                <div className="">
-                    <Link href={"/"}>
+        <footer className="footer border-t border-[#33353F]/50 text-white bg-black/40 backdrop-blur-sm">
+            <div className="container mx-auto p-12 flex flex-col md:flex-row gap-8 justify-between items-center">
+                <div className="flex items-center gap-4">
+                    <Link href={"/"} className="hover:scale-105 transition-transform">
                         <Image
                             src="/images/logo.jpg"
-                            alt="hero image"
-                            className="rounded-full"
-                            width={50}
-                            height={50}
+                            alt="Funding First Logo"
+                            className="rounded-full border border-yellow-500/20"
+                            width={60}
+                            height={60}
                         />
                     </Link>
-                </div>
-                <div className="flex-col">
-                    <p className="text-slate-600 italic" style={{fontSize: '15px', color: '#fff', fontWeight: 'bold'}}>All rights reserved.</p>
-                    <p className="text-slate-600 italic" style={{fontSize: '15px', color: '#fff', fontWeight: 'bold'}}>3rd floor, T-17 silicon shopppers opp. satya nagar, udhana, surat
-                        -394210</p>
+                    <div>
+                        <span className="text-xl font-bold text-gradient">Funding First</span>
+                        <p className="text-slate-500 text-xs tracking-widest uppercase">Smart Capital Solutions</p>
+                    </div>
                 </div>
 
+                <div className="text-center md:text-right">
+                    <p className="text-slate-400 text-sm mb-2">
+                        3rd floor, T-17 Silicon Shoppers, Opp. Satya Nagar, Udhana, Surat - 394210
+                    </p>
+                    <p className="text-slate-500 text-xs">
+                        &copy; {new Date().getFullYear()} Funding First. All rights reserved.
+                    </p>
+                </div>
             </div>
         </footer>
     );

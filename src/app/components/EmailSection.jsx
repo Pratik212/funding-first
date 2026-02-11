@@ -1,85 +1,130 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
+import GithubIcon from "../../../public/github-icon.svg";
 import LinkedinIcon from "../../../public/linkedin-icon.svg";
-import Instagram from "../../../public/instagram.svg";
-import Twitter from "../../../public/twitter.svg";
-import Facebook from "../../../public/facebook.svg";
+import Link from "next/link";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 const EmailSection = () => {
+    const [emailSubmitted, setEmailSubmitted] = useState(false);
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const data = {
+            email: e.target.email.value,
+            subject: e.target.subject.value,
+            message: e.target.message.value,
+        };
+        setEmailSubmitted(true);
+    };
+
     return (
-        <section id="contact">
-            <div className="grid md:grid-cols-2 my-12 md:my-12 gap-4 relative">
-                <div
-                    className="bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary-900 to-transparent rounded-full h-80 w-80 z-0 blur-lg absolute top-3/4 -left-4 transform -translate-x-1/2 -translate-1/2"/>
-                <div className="z-10">
-                    <h5 className="text-xl font-bold text-white my-2">
-                        Let&apos;s Connect
-                    </h5>
-                    <p className="text-[#ADB7BE] mb-4 max-w-md">
-                        Embark on a journey to financial empowerment with personalized Loan Advisory Expertise. We specialize in crafting strategic solutions that align with your goals, providing precise Capital Guidance to shape a secure and prosperous future. Let`&apos;s navigate the world of finance together – your dreams, our commitment. Ready to elevate your financial strategy?
-                    </p>
-                    <div className="socials flex flex-row gap-2">
-                        <Image src={Facebook} alt="Facebook Icon"/>
-                        <Image src={Instagram} alt="Instagram Icon"/>
-                        <Image src={Twitter} alt="Twitter Icon"/>
-                        <Image src={LinkedinIcon} alt="Linkedin Icon"/>
-                    </div>
-                </div>
-                <div className="z-10">
-                    <form className="flex flex-col">
-                        <div className="mb-6">
-                            <label
-                                htmlFor="email"
-                                className="text-white block mb-2 text-sm font-medium"
-                            >
-                                Your email
-                            </label>
-                            <input
-                                type="email"
-                                id="email"
-                                required
-                                className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5"
-                                placeholder=""
-                            />
-                        </div>
-                        <div className="mb-6">
-                            <label
-                                htmlFor="subject"
-                                className="text-white block text-sm mb-2 font-medium"
-                            >
-                                Subject
-                            </label>
-                            <input
-                                type="text"
-                                id="subject"
-                                required
-                                className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5"
-                                placeholder=""
-                            />
-                        </div>
-                        <div className="mb-6">
-                            <label
-                                htmlFor="message"
-                                className="text-white block text-sm mb-2 font-medium"
-                            >
-                                Message
-                            </label>
-                            <textarea
-                                name="message"
-                                id="message"
-                                className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5"
-                                placeholder="Let's talk about..."
-                            />
-                        </div>
-                        <button
-                            type="submit"
-                            className="bg-primary-500 hover:bg-primary-600 text-white font-medium py-2.5 px-5 rounded-lg w-full"
+        <section
+            id="contact"
+            className="grid grid-cols-1 md:grid-cols-2 py-12 md:py-24 gap-12 relative"
+        >
+            {/* Background Decor */}
+            <div className="absolute top-1/4 -left-10 w-80 h-80 bg-orange-500/10 rounded-full blur-[100px] pointer-events-none -z-10" />
+
+            <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8 }}
+                viewport={{ once: true }}
+                className="z-10 px-4 md:px-0"
+            >
+                <h5 className="text-4xl md:text-5xl font-extrabold text-white my-4">
+                    Let’s <span className="text-gradient">Connect</span>
+                </h5>
+                <p className="text-slate-400 mb-8 max-w-md text-lg leading-relaxed">
+                    Ready to take the first step towards your financial goals? Our experts are here to help you find the perfect loan solution.
+                </p>
+                <div className="socials flex flex-row gap-6 mb-12 md:mb-0">
+                    {[
+                        { icon: "/github-icon.svg", url: "#" },
+                        { icon: "/linkedin-icon.svg", url: "#" }
+                    ].map((social, index) => (
+                        <motion.div
+                            key={index}
+                            whileHover={{ scale: 1.2, rotate: 5 }}
+                            whileTap={{ scale: 0.9 }}
+                            className="glass-card p-3 rounded-xl border border-white/10"
                         >
-                            Send Message
-                        </button>
-                    </form>
+                            <Link href={social.url}>
+                                <Image src={social.icon} alt="SocialIcon" width={30} height={30} className="invert" />
+                            </Link>
+                        </motion.div>
+                    ))}
                 </div>
-            </div>
+            </motion.div>
+
+            <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8 }}
+                viewport={{ once: true }}
+                className="px-4 md:px-0"
+            >
+                <div className="glass-card p-8 md:p-10 rounded-[2.5rem] border border-white/10 shadow-2xl relative">
+                    {emailSubmitted ? (
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            className="text-white text-center py-10"
+                        >
+                            <div className="w-20 h-20 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                                <svg className="w-10 h-10 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                            </div>
+                            <h3 className="text-2xl font-bold mb-2">Message Sent!</h3>
+                            <p className="text-slate-400 text-lg">We'll get back to you within 24 hours.</p>
+                        </motion.div>
+                    ) : (
+                        <form className="flex flex-col" onSubmit={handleSubmit}>
+                            <div className="mb-6">
+                                <label className="text-white block mb-2 text-sm font-bold uppercase tracking-wider">Email Address</label>
+                                <input
+                                    name="email"
+                                    type="email"
+                                    id="email"
+                                    required
+                                    className="bg-white/5 border border-white/10 placeholder-[#9CA2A9] text-gray-100 text-sm rounded-xl block w-full p-4 focus:ring-1 focus:ring-yellow-500 focus:border-yellow-500 transition-all outline-none"
+                                    placeholder="name@company.com"
+                                />
+                            </div>
+                            <div className="mb-6">
+                                <label className="text-white block mb-2 text-sm font-bold uppercase tracking-wider">Subject</label>
+                                <input
+                                    name="subject"
+                                    type="text"
+                                    id="subject"
+                                    required
+                                    className="bg-white/5 border border-white/10 placeholder-[#9CA2A9] text-gray-100 text-sm rounded-xl block w-full p-4 focus:ring-1 focus:ring-yellow-500 focus:border-yellow-500 transition-all outline-none"
+                                    placeholder="What's this about?"
+                                />
+                            </div>
+                            <div className="mb-8">
+                                <label className="text-white block mb-2 text-sm font-bold uppercase tracking-wider">Message</label>
+                                <textarea
+                                    name="message"
+                                    id="message"
+                                    rows="4"
+                                    className="bg-white/5 border border-white/10 placeholder-[#9CA2A9] text-gray-100 text-sm rounded-xl block w-full p-4 focus:ring-1 focus:ring-yellow-500 focus:border-yellow-500 transition-all outline-none resize-none"
+                                    placeholder="Tell us about your requirements..."
+                                />
+                            </div>
+                            <button
+                                type="submit"
+                                className="bg-gradient-to-r from-yellow-400 to-orange-500 text-black font-bold py-4 px-5 rounded-xl transition-all hover:shadow-[0_0_30px_rgba(255,165,0,0.4)] active:scale-95"
+                            >
+                                Send Message
+                            </button>
+                        </form>
+                    )}
+                </div>
+            </motion.div>
         </section>
     );
 };
