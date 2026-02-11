@@ -79,7 +79,7 @@ const EmailSection = () => {
                                 </svg>
                             </div>
                             <h3 className="text-2xl font-bold mb-2">Message Sent!</h3>
-                            <p className="text-slate-400 text-lg">We'll get back to you within 24 hours.</p>
+                            <p className="text-slate-400 text-lg">We&apos;ll get back to you within 24 hours.</p>
                         </motion.div>
                     ) : (
                         <form className="flex flex-col" onSubmit={handleSubmit}>
